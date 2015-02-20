@@ -1,5 +1,4 @@
-source "https://rubygems.org"
-
+source "http://rubygems.org"
 ruby "2.1.5"
 
 gem 'activesupport', '~> 4.1.4'
