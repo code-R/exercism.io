@@ -8,7 +8,7 @@ set :repo_url, "git@github.com:hanumakanthvvn/exercism.io.git"
 set :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
 
 # Default deploy_to directory is /var/www/my_app_name
-set :deploy_to, "/home/pramati/projects/exercism/exercism.io"
+set :deploy_to, "/u/apps/exercism/exercism.io"
 
 # Default value for :scm is :git
 set :scm, :git

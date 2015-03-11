@@ -1,0 +1,20 @@
+---
+postgres: &postgres
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  host: db
+  username: exercism
+  password: apples2
+
+test:
+  <<: *postgres
+  database: exercism_test
+
+development:
+  <<: *postgres
+  database: exercism_development
+
+production:
+  <<: *postgres
+  database: exercism_development
