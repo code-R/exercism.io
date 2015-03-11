@@ -1,0 +1,20 @@
+---
+postgres: &postgres
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  host: db
+  username: db_username
+  password: secret
+
+test:
+  <<: *postgres
+  database: db_test
+
+development:
+  <<: *postgres
+  database: db_development
+
+production:
+  <<: *postgres
+  database: exercism_production
