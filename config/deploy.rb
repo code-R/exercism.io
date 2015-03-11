@@ -2,7 +2,7 @@
 lock "3.3.5"
 
 set :application, "exercism"
-set :repo_url, "git@github.com:code-R/exercism.io.git"
+set :repo_url, "git@github.com:hanumakanthvvn/exercism.io.git"
 
 # Default branch is :master
 set :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
