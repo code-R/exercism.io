@@ -14,3 +14,7 @@ test:
 development:
   <<: *postgres
   database: exercism_development
+
+production:
+  <<: *postgres
+  database: exercism_production
