@@ -24,8 +24,8 @@ module ExercismWeb
         if current_user.guest?
           halt 403, "You must be logged in to edit your account settings"
         else
-          if settings.development?
-            `cd ~/Pramati/Exercism/vamsi/x-api && git submodule init && git submodule update --remote --merge`
+          if settings.production?
+            `cd ~/home/ubuntu/exercism/x-api && git submodule init && git submodule update --remote --merge`
             flash[:success] = "Assignment Updated Successfully"
           end
         end
