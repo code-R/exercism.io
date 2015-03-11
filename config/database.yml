@@ -4,8 +4,8 @@ postgres: &postgres
   encoding: unicode
   pool: 5
   host: db
-  username: db_username
-  password: secret
+  username: exercism
+  password: apples
 
 test:
   <<: *postgres
