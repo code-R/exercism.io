@@ -37,7 +37,11 @@ namespace :deploy do
   desc "Restart application"
   task :build do
     on roles(:app), in: :sequence, wait: 5 do
-      execute "cd '#{release_path}'; fig -p exercism build"
+      # we dont need to add this build step on every deploy
+      # only run build when something changed in Gemfile or Dockerfile
+      # execute "cd '#{release_path}'; docker build -t exercism-web ."
+      execute "docker stop `docker ps -a -q`"
+      execute "docker rm `docker ps -a -q`"
       execute "cd '#{release_path}'; fig -p exercism up -d"
     end
   end
