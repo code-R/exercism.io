@@ -2,7 +2,7 @@ class GithubSource
   attr_reader :github, :user, :slug, :code
 
   def initialize(submission)
-    @github = Github.new
+    @github = Github.new basic_auth: 'SaiPramati:pramati123'
     @user = submission.user
     @slug = submission.slug
     @code = submission.code

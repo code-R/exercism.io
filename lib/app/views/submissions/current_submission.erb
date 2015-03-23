@@ -25,15 +25,9 @@
     </div>
 
     <div class="clearfix"></div>
-    <% solution.each do |s| %>
-      <h4><%#= s["path"] %></h4>
-      <% if s["type"] == "tree"%>
-        <a class="tree_anchor" href="<%= s['url']%>"><i class="fa fa-folder-open-o"></i>&nbsp;<%= s["path"] %></a>
-      <% else %>
-       <a class="blob_anchor" href="<%= s['url']%>"> <i class="fa fa-file-o"></i>&nbsp;<%= s["path"] %></a>
-      <% end %> 
-            
-    <% end %>
+    
+          <%= erb :"submissions/_solution",locals: { solution: solution } %>    
+        <div id="tree_res"></div>
       <div id="result"></div> 
     <div class="submission-likes">
       <%= like_submission_button(submission, current_user) %>

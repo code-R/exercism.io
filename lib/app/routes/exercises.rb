@@ -1,3 +1,4 @@
+require 'erb'
 module ExercismWeb
   module Routes
     class Exercises < Core
@@ -132,6 +133,57 @@ module ExercismWeb
         submission.destroy
         Hack::UpdatesUserExercise.new(submission.user_id, submission.track_id, submission.slug).update
         redirect "/"
+      end
+
+      get '/get_blob_source' do
+        content_type :json
+        github = Github.new basic_auth: 'SaiPramati:pramati123'
+        url_split_array = params['github_api_url'].split("/")
+        repo = url_split_array[-4]
+        sha = url_split_array[-1]
+        data = github.git_data.blobs.get current_user.username, repo, sha
+
+        response = Base64.decode64 data.body.content
+        marked_content = ConvertsMarkdownToHTML.convert("```ruby\n#{response}\n```")
+
+        { :key1 => marked_content }.to_json
+      end
+
+      get '/get_tree_source' do
+        
+        github = Github.new basic_auth: 'SaiPramati:pramati123'
+        url_split_array = params['github_api_url'].split("/")
+        p "-==============================="
+        p url_split_array.inspect
+        repo = url_split_array[-4]
+        sha = url_split_array[-1]
+        trees = github.git_data.trees.get current_user.username, repo, sha
+        res = []
+        trees.tree.each do |tree_item|
+          res1 = {}
+          uri = URI(tree_item.url)
+          resp = JSON.parse(Net::HTTP.get(uri))
+          res1["path"] = tree_item.path
+          res1["type"] = tree_item.type
+          res1["url"]= resp["url"]
+          res << res1
+        end
+        github_response = %q{ 
+        <% res .each do |s| %>
+      <h4><%#= s["path"] %></h4>
+      <% if s["type"] == "tree"%>
+        <span class="tree_anchor" style="cursor:pointer" data-url="<%= s['url']%>"><i class="fa fa-folder-open-o"></i>&nbsp;<%= s["path"] %></span>
+
+        <div class%>"></div>
+      <% else %>
+       <span class="blob_anchor" style="cursor:pointer" data-url="<%= s['url']%>"> <i class="fa fa-file-o"></i>&nbsp;<%= s["path"] %></span>
+      <% end %> 
+<% end %>
+        }
+        renderer = ERB.new(github_response)
+        response_out = renderer.result(binding)
+        #res
+        { :key1 => response_out }.to_json
       end
     end
   end

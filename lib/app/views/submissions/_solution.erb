@@ -1,0 +1,9 @@
+<% solution.each do |s| %>
+      <h4><%#= s["path"] %></h4>
+      <% if s["type"] == "tree"%>
+        <span class="tree_anchor" style="cursor:pointer" data-url="<%= s['url']%>"><i class="fa fa-folder-open-o"></i>&nbsp;<%= s["path"] %></span>
+        <div id="tree_res"></div>
+      <% else %>
+       <span class="blob_anchor" style="cursor:pointer" data-url="<%= s['url']%>"> <i class="fa fa-file-o"></i>&nbsp;<%= s["path"] %></span>
+      <% end %> 
+      <% end %>
