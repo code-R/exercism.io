@@ -1,4 +1,6 @@
 ## exercism.io
+
+[![Join the chat at https://gitter.im/hanumakanthvvn/exercism.io](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/hanumakanthvvn/exercism.io?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![Build Status](https://travis-ci.org/exercism/exercism.io.png?branch=master)](https://travis-ci.org/exercism/exercism.io)
 [![Code Climate](https://codeclimate.com/github/exercism/exercism.io.png)](https://codeclimate.com/github/exercism/exercism.io)
 [![Gemnasium](https://gemnasium.com/exercism/exercism.io.png)](https://gemnasium.com/exercism/exercism.io)
