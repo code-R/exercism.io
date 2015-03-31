@@ -1,48 +1,6 @@
 module ExercismWeb
   module Routes
     class Static < Core
-      get '/abc' do
-        content_type :json
-
-        # SaiVardhan/hamming
-        # res = [
-        #   {"id"=>"ajson1", "parent"=>"#", "text"=>"Simple root node"},
-        #   {"id"=>"ajson2", "parent"=>"#", "text"=>"Root node 2"},
-        #   {"id"=>"ajson3", "parent"=>"ajson2", "text"=>"Child 1"},
-        #   {"id"=>"ajson4", "parent"=>"ajson2", "text"=>"Child 2"}
-        # ]
-        Octokit.configure do |c|
-          c.login = 'SaiPramati'
-          c.password = 'pramati123'
-        end
-        path = params[:path] == "#" ? "" : params[:path]
-        contents = Octokit.contents("prasadsurase/calculator", path: path)
-
-        if contents.is_a? Array
-          res = []
-          contents.each do |cont|
-            cont.text = cont.name
-            cont.id = cont.path
-            if(cont.type == 'dir')
-              cont.children = true
-            else
-              cont.icon = "jstree-file"
-            end
-            res << cont.to_hash
-          end
-        else
-          response = Base64.decode64(contents.content)
-          marked_content = ConvertsMarkdownToHTML.convert("```javascript\n#{response}\n```")
-          res = { data: marked_content }
-        end
-
-        res.to_json
-      end
-
-      get '/git_tree' do
-        erb :"site/git_tree"
-      end
-
       get '/rikki' do
         erb :"site/rikki"
       end
