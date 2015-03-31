@@ -36,12 +36,19 @@ module ExercismWeb
         title("%s by %s in %s" % [submission.problem.name, submission.user.username, submission.problem.language])
         src_klass = submission.user.source_klass
         src_obj = src_klass.new(submission)
-        data = {
-          submission: submission,
-          next_submission: next_submission,
-          sharing: Sharing.new,
-          solution: src_obj.solution,
-        }
+        if src_klass == GithubSource
+          data = {submission: submission,
+                  next_submission: next_submission,
+                  sharing: Sharing.new,
+                  solution: get_tree(submission)}
+        else
+          data = {
+            submission: submission,
+            next_submission: next_submission,
+            sharing: Sharing.new,
+            solution: src_obj.solution,
+          }
+        end
         erb :"submissions/show", locals: data
       end
 
@@ -132,6 +139,46 @@ module ExercismWeb
         submission.destroy
         Hack::UpdatesUserExercise.new(submission.user_id, submission.track_id, submission.slug).update
         redirect "/"
+      end
+
+      get '/submissions/blob/content' do
+        content_type :json
+        submission = Submission.find_by_key(params[:key])
+        blob = Octokit.blob("#{submission.user.username}/#{submission.slug}", params[:sha])
+        result =  Base64.decode64(blob.content)
+        marked_content = ConvertsMarkdownToHTML.convert("```javascript\n#{result}\n```")
+        content = { data: marked_content } 
+        content.to_json
+      end
+
+      def get_tree(submission)
+        Octokit.configure do |c|
+          c.login = 'SaiPramati'
+          c.password = 'pramati123'
+        end
+        tree = Octokit.tree("#{submission.user.username}/#{submission.slug}", submission.solution.values.first, recursive: true)
+
+        result = []
+        sorted_blobs = tree.tree.select{|x| x.type == 'blob'}
+        sorted_trees = tree.tree.select{|x| x.type == 'tree'}
+
+        (sorted_trees + sorted_blobs).each do |x|
+          hsh = {}
+          hsh[:id] = x.path
+          tmp = x.path.split("/")
+          hsh[:text] = tmp.last
+          if tmp.size == 1
+            parent = "#"
+          else
+            tmp.pop
+            parent = tmp.join("/")
+          end
+          hsh[:parent] = parent
+          hsh[:icon] = x.type.eql?('tree') ? '' : 'jstree-file'
+          hsh[:data] = x.sha
+          result << hsh
+        end
+        result.to_json
       end
     end
   end
