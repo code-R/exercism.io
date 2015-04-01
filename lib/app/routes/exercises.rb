@@ -175,7 +175,7 @@ module ExercismWeb
           end
           hsh[:parent] = parent
           hsh[:icon] = x.type.eql?('tree') ? '' : 'jstree-file'
-          hsh[:data] = x.sha
+          hsh[:data] = { sha: x.sha, type: hsh[:icon] }
           result << hsh
         end
         result.to_json
