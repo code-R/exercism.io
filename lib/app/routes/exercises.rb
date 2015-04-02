@@ -146,7 +146,6 @@ module ExercismWeb
         content_type :json
         submission = Submission.find_by_key(params[:key])
         blob = Octokit.blob("#{submission.user.username}/#{submission.slug}", params[:sha])
-        #blob = Octokit.blob("hanumakanthvvn/exercism.io", params[:sha])
         s = SourceClassifier.new(File.join(File.dirname(__FILE__), '../../../bin/', 'trainer.bin'))
         result =  Base64.decode64(blob.content)
         source_language = s.identify(result)
