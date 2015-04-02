@@ -1,3 +1,4 @@
+require 'sourceclassifier'
 module ExercismWeb
   module Routes
     class Exercises < Core
@@ -145,8 +146,11 @@ module ExercismWeb
         content_type :json
         submission = Submission.find_by_key(params[:key])
         blob = Octokit.blob("#{submission.user.username}/#{submission.slug}", params[:sha])
+        #blob = Octokit.blob("hanumakanthvvn/exercism.io", params[:sha])
+        s = SourceClassifier.new(File.join(File.dirname(__FILE__), '../../../bin/', 'trainer.bin'))
         result =  Base64.decode64(blob.content)
-        marked_content = ConvertsMarkdownToHTML.convert("```javascript\n#{result}\n```")
+        source_language = s.identify(result)
+        marked_content = ConvertsMarkdownToHTML.convert("```#{source_language.downcase}\n#{result}\n```")
         content = { data: marked_content } 
         content.to_json
       end
@@ -156,27 +160,30 @@ module ExercismWeb
           c.login = 'SaiPramati'
           c.password = 'pramati123'
         end
-        tree = Octokit.tree("#{submission.user.username}/#{submission.slug}", submission.solution.values.first, recursive: true)
+        git_tree_source = Octokit.tree("#{submission.user.username}/#{submission.slug}",
+                                        submission.solution.values.first, recursive: true)
+        # git_tree_source = Octokit.tree("hanumakanthvvn/exercism.io",
+        #                                 "5def0c8bffba83662c7bcf9c5f6eb249f52a0a26", recursive: true)
 
         result = []
-        sorted_blobs = tree.tree.select{|x| x.type == 'blob'}
-        sorted_trees = tree.tree.select{|x| x.type == 'tree'}
+        sorted_blobs = git_tree_source.tree.select{|node| node.type == 'blob'}
+        sorted_trees = git_tree_source.tree.select{|node| node.type == 'tree'}
 
-        (sorted_trees + sorted_blobs).each do |x|
-          hsh = {}
-          hsh[:id] = x.path
-          tmp = x.path.split("/")
-          hsh[:text] = tmp.last
-          if tmp.size == 1
+        (sorted_trees + sorted_blobs).each do |node|
+          node_contents = {}
+          node_contents[:id] = node.path
+          git_path_names = node.path.split("/")
+          node_contents[:text] = git_path_names.last
+          if git_path_names.size == 1
             parent = "#"
           else
-            tmp.pop
-            parent = tmp.join("/")
+            git_path_names.pop
+            parent = git_path_names.join("/")
           end
-          hsh[:parent] = parent
-          hsh[:icon] = x.type.eql?('tree') ? '' : 'jstree-file'
-          hsh[:data] = { sha: x.sha, type: hsh[:icon] }
-          result << hsh
+          node_contents[:parent] = parent
+          node_contents[:icon] = node.type.eql?('tree') ? '' : 'file'
+          node_contents[:data] = { sha: node.sha, type: node_contents[:icon] }
+          result << node_contents
         end
         result.to_json
       end

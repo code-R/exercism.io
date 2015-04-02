@@ -1,6 +1,6 @@
 $('#git_tree_content').on("select_node.jstree", function(e, data){
   var git_node = data.node.data;
-  if(git_node.type === "jstree-file"){
+  if(git_node.type === "file"){
   $.ajax('blob/content', {
     type: 'get',
     data: { sha: git_node.sha , key: key},
