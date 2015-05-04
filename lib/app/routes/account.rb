@@ -20,6 +20,12 @@ module ExercismWeb
         redirect "/account"
       end
 
+      get "/get_usernames" do
+         p "======================="
+          users = ::User.all.map{ |u| u.username}
+          users.to_json
+      end
+
       put "/update_assignment" do
         if current_user.guest?
           halt 403, "You must be logged in to edit your account settings"
