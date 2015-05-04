@@ -21,9 +21,7 @@ module ExercismWeb
       end
 
       get "/get_usernames" do
-         p "======================="
-          users = ::User.all.map{ |u| u.username}
-          users.to_json
+        ::User.where("username like '%#{params[:query]}%'").pluck(:username).to_json
       end
 
       put "/update_assignment" do
@@ -35,7 +33,7 @@ module ExercismWeb
             flash[:success] = "Assignment Updated Successfully"
           end
         end
-          redirect "/account"
+        redirect "/account"
       end
     end
   end
