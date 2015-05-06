@@ -21,7 +21,7 @@ module ExercismWeb
       end
 
       get "/get_usernames" do
-        ::User.where("username like '%#{params[:query]}%'").pluck(:username).to_json
+        params[:query] && !params[:query].empty? ? ::User.where("username like '%#{params[:query]}%'").map{|u| {id: u.username, text: u.username }}.to_json : []
       end
 
       put "/update_assignment" do

@@ -26,9 +26,9 @@
             </div>
           </div>
           <div class="form-group">
-            <label class="control-label col-sm-3" for="team_usernames">Usernames (comma-separated list)</label>
+            <label class="control-label col-sm-3" for="team_usernames">Usernames</label>
             <div class="col-sm-9">
-              <textarea rows="5" class="form-control" name="team[usernames]" id="team_usernames" placeholder="e.g.,  kytrinyx, seeflanigan, rubysolo, theotherzach"><%= team.usernames.join(", ") %></textarea>
+              <select class="form-control" id='team_usernames' multiple="multiple" name="team[usernames][]"></select>
             </div>
           </div>
           <div class="form-group">
