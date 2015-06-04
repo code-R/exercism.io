@@ -44,7 +44,7 @@ class Node
   end
 
   def get_hash
-    { id: id, parent: parent, icon: icon, data: data, text: id }
+    { id: id, parent: parent, icon: icon, data: data, text: text }
   end
 
   def root_node?
