@@ -4,12 +4,12 @@
     <article class="article-block">
       <div class="article-contents">
         <h1>Introducing the Command Line Client</h1>
-        <p>Exercism is all about having conversations about code. In order to start having those conversations, you need to install the exercism command line client. The exercism command line client is the all-in-one tool for fetching and submitting code. Let's get started.</p>
+        <p>Hootcode is all about having conversations about code. In order to start having those conversations, you need to install the hootcode command line client. The hootcode command line client is the all-in-one tool for fetching and submitting code. Let's get started.</p>
 
         <h2>Start a conversation with your code</h2>
 
-        <p>Software development is an activity that should not be performed in isolation.  Exercism is intended to help you interact with other developers by way of your software code.</p>
-        <p>Exercism provides a launching point for this to occur.  Here's how it works:<br />
+        <p>Software development is an activity that should not be performed in isolation.  Hootcode is intended to help you interact with other developers by way of your software code.</p>
+        <p>Hootcode provides a launching point for this to occur.  Here's how it works:<br />
         <ul>
           <li>You fetch some challenges in the form of README documents.  These include associated test suites</li>
           <li>Then write code in order to make the tests pass</li>
@@ -27,21 +27,21 @@
 
         <h3>Don't be shy - start right now</h3>
 
-        <p>Begin by installing the <code>exercism</code> CLI (<em>Command-Line Interface</em>) tool.  <a href="/installing-cli" target="_blank" title="Installing the Exercism CLI">Details here</a></p>
+        <p>Begin by installing the <code>hootcode</code> CLI (<em>Command-Line Interface</em>) tool.  <a href="/installing-cli" target="_blank" title="Installing the Hootcode CLI">Details here</a></p>
 
         <p>With the CLI installed, configure it using the <code>configure</code> command. You can always find your API key on your <a href="/account">account page</a>.
 
         <% if !current_user.guest? %>
-          <pre><code>  exercism configure --key=<%= current_user.key%> --host=http://hootcode.com --api=http://54.172.126.241</code></pre>
+          <pre><code>  hootcode configure --key=<%= current_user.key%> --host=http://hootcode.com --api=http://54.172.126.241</code></pre>
 
           <p>The command can take an optional <code>--dir</code> argument, if you want to specify a particular directory. If nothing is specified, a directory will be created for you in your home directory.</p>
           <% else %>
-          <p> <code> Please login to get your api key </code></p>
+          <p class="alert alert-danger"> <i class="fa fa-exclamation-triangle"></i> Please login to get your api key</p>
         <% end %>
 
         <p>Fetch problems with this simple command:<br />
 
-      <pre><code>  exercism fetch</code></pre>
+      <pre><code>  hootcode fetch</code></pre>
       </div>
     </article>
   </section>
