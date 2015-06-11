@@ -4,9 +4,8 @@
     <%= erb :"submissions/user_actions", locals: { submission: submission } %>
 
     <% if current_user.owns?(submission) %>
-      <!-- e2h -->
       <a
-        href="https://twitter.com/intent/tweet?text=I just submitted the <%= submission.track_id %> <%= submission.slug %> exercise at hootcode.com - Leave me a nitpick at http://hootcode.com/submissions/<%= submission.key %>"
+        href="https://twitter.com/intent/tweet?text=I just submitted the <%= submission.track_id %> <%= submission.slug %> exercise at @exercism_io - Leave me a nitpick at http://exercism.io/submissions/<%= submission.key %>"
         class="btn btn-default"
         data-toggle="tooltip"
         data-placement="bottom"
