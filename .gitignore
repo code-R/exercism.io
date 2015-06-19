@@ -25,7 +25,7 @@ db/migrations.sql
 
 # JavaScript
 node_modules
-
+bower_components
 # PHP
 phpunit.phar
 
