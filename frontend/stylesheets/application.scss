@@ -2,7 +2,7 @@
 @import 'libraries/variables';
 
 // Theme & Bootstrap
-@import 'themes/hootcode.scss';
+@import 'themes/hootcode';
 @import 'vendors/bootstrap/css/bootstrap';
 // Font Awesome - If at all we require it now.
 @import 'vendors/font-awesome/css/font-awesome';
@@ -13,5 +13,5 @@
 // Sections
 @import 'sections/import';
 // Vendors
-@import 'vendors/jquery.atwho.scss';
+@import 'vendors/jquery.atwho';
 

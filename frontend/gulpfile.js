@@ -1,12 +1,21 @@
-var gulp = require('gulp'),
-    sass = require('gulp-sass'),
+var gulp   = require('gulp'),
+    sass   = require('gulp-sass'),
     jshint = require('gulp-jshint'),
     uglify = require('gulp-uglify'),
     minify = require('gulp-minify-css'),
-    prefix = require('gulp-autoprefixer');
+    prefix = require('gulp-autoprefixer'),
+    del    = require('del');
 
-gulp.task('compile:sass', function(){
-  gulp.src("stylesheets/application.scss")
+// Cleaning Directories
+gulp.task('clean', function(){
+    del(['bundle'], function(){
+        console.log("Cleaning Complete");
+    });
+});
+
+// Sass Compilation, prefixing and minification.
+gulp.task('compile:sass',['clean'], function(){
+  return gulp.src("stylesheets/application.scss")
     .pipe(sass())
     .pipe(prefix({
         browsers : ['last 2 versions'],
