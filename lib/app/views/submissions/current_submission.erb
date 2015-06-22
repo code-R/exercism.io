@@ -49,16 +49,24 @@
         <%= md(code, filename) %>
       <% end %>
     <% end %>
-    
+
     <br/>
-    <% if submission.analysis.present? %>
+    <% if submission.analysis.present? && submission.language == 'ruby' %>
       <span> Analysis Summary <a class='analysis' href="javascript:;">more >></a></span>
       <p class='show-analysis'><h4><b><%= submission.analysis.split("\n").last %></b><h4></p>
       <p class='show-analysis' style="display:none">
         <% submission.analysis.split("C:").each do |txt| %>
             <%= txt %><br/><br/>
-        <%end%>  
+        <%end%>
       </p>
+    <%end%>
+
+    <% if submission.analysis.present? && submission.language == 'java' %>
+      <span><h4>Analysis Summary</h4>
+        <p class='show-analysis'>
+          <a href=<%= submission.analysis%> target='_blank'><%= submission.analysis %></a>
+        </p>
+      </span>
     <%end%>
 
     <div class="submission-likes">
