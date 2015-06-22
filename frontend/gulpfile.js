@@ -6,16 +6,30 @@ var gulp   = require('gulp'),
     prefix = require('gulp-autoprefixer'),
     del    = require('del');
 
+var paths = {
+    fonts : [
+        // 'stylesheets/vendors/bootstrap/fonts/**/*',
+        'stylesheets/vendors/font-awesome/fonts/**/*'
+    ],
+    scss : ['stylesheets/application.scss']
+}
 // Cleaning Directories
-gulp.task('clean', function(){
+gulp.task('clean:css', function(){
+    del(['bundle/css'], function(){
+        console.log("Cleaning CSS Complete");
+    });
+});
+
+// Cleaning Directories
+gulp.task('clean:all', function(){
     del(['bundle'], function(){
-        console.log("Cleaning Complete");
+        console.log("Cleaning All Complete");
     });
 });
 
 // Sass Compilation, prefixing and minification.
-gulp.task('compile:sass',['clean'], function(){
-  return gulp.src("stylesheets/application.scss")
+gulp.task('compile:sass',['clean:css'], function(){
+  return gulp.src(paths.scss)
     .pipe(sass())
     .pipe(prefix({
         browsers : ['last 2 versions'],
@@ -24,4 +38,9 @@ gulp.task('compile:sass',['clean'], function(){
     }))
     .pipe(minify())
     .pipe(gulp.dest('bundle/css'));
-}); 
+});
+
+gulp.task("fonts", function(){
+    gulp.src(paths.fonts)
+        .pipe(gulp.dest("bundle/fonts"));
+}) 
