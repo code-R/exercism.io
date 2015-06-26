@@ -23,9 +23,11 @@ db/seeds.sql
 db/schema.sql
 db/migrations.sql
 
-# JavaScript
+# Frontend
 node_modules
 bower_components
+frontend/bundle
+
 # PHP
 phpunit.phar
 
