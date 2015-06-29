@@ -1,9 +1,0 @@
-.completed-exercise {
-  line-height: 1.6em;
-  a:after {
-    content: ", ";
-  }
-  &:last-child a:after {
-    content: ".";
-  }
-}
