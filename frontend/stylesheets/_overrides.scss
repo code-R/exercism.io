@@ -5,6 +5,10 @@
     - Reduce selector specificity.
 
 **/
+h1, h2 {
+  color: #c66606;
+}
+
 .navbar-inverse .navbar-nav > .open > a,
 .navbar-inverse .navbar-nav > .open > a:focus,
 .navbar-inverse .navbar-nav > .open > a:hover {
@@ -37,9 +41,11 @@ html {
   min-height:100%;
   position:relative;
 }
+
 body {
-  padding-bottom:60px;
+  padding-bottom: 8em;
 }
+
 .header {
   height:390px;
   background:#fff url("../img/bg_header_big.png") repeat-x;
@@ -307,6 +313,7 @@ footer nav li a:hover {
 .footer-copyright {
   color:#fff;
   margin-top:15px;
+  font-size:13px;
 }
 
 .landing-image-container img {
