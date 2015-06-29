@@ -1,10 +1,25 @@
 var gulp   = require('gulp'),
-    sass   = require('gulp-sass'),
     jshint = require('gulp-jshint'),
     uglify = require('gulp-uglify'),
     minify = require('gulp-minify-css'),
     prefix = require('gulp-autoprefixer'),
-    del    = require('del');
+    del    = require('del'),
+    concat = require('gulp-concat'),
+    sass   = require('gulp-ruby-sass');
+
+var options = {
+  del : {
+    force : true
+  },
+  prefix : {
+      browsers : ['last 2 versions'],
+      cascade : false,
+      remove : true
+  },
+  minify : {
+    keepSpecialComments : 0
+  }
+};
 
 var paths = {
     fonts : [
@@ -15,14 +30,14 @@ var paths = {
 }
 // Cleaning CSS Output Directory
 gulp.task('clean:css', function(){
-    return del([paths.dist+'css'], function(){
+    return del([paths.dist+'css'], options.del, function(){
         console.log('Cleaning CSS Complete');
     });
 });
 
 // Cleaning Fonts Output Directory
 gulp.task('clean:fonts', function(){
-    return del([paths.dist+'fonts'], function(){
+    return del([paths.dist+'fonts'], options.del, function(){
         console.log('Cleaning Fonts Complete');
     });
 });
@@ -32,15 +47,10 @@ gulp.task('clean:all', ['clean:css', 'clean:fonts'], function(){
 });
 
 // Sass Compilation, prefixing and minification.
-gulp.task('compile:sass',['clean:css'], function(){
-  gulp.src(paths.scss+"application.scss")
-    .pipe(sass())
-    .pipe(prefix({
-        browsers : ['last 2 versions'],
-        cascade : false,
-        remove : true
-    }))
-    .pipe(minify())
+gulp.task('scss',['clean:css'], function(){
+  return sass(paths.scss+"application.scss")
+    .pipe(prefix(options.prefix))
+    .pipe(minify(options.minify))
     .pipe(gulp.dest(paths.dist+'css'));
 });
 
@@ -52,5 +62,5 @@ gulp.task('fonts', function(){
 
 // Watch For Changes
 gulp.task('watch', function(){
-  gulp.watch(paths.scss+'/**/*.scss', ['compile:sass']);
+  gulp.watch(paths.scss+'/**/*.scss', ['scss']);
 })

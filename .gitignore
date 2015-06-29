@@ -27,6 +27,7 @@ db/migrations.sql
 node_modules
 bower_components
 frontend/bundle
+.gulp-scss-cache
 
 # PHP
 phpunit.phar
