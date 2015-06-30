@@ -38,11 +38,11 @@ var paths = {
       'bower_components/angular/angular.js',
       'bower_components/Chart.js/Chart.js',
       'bower_components/bootstrap-sass/assets/javascripts/bootstrap.js',
-      'bower_components/emojify.js/dist/js/emojify.js',
       'bower_components/jstree/dist/jstree.js',
       'bower_components/theia-sticky-sidebar/js/theia-sticky-sidebar.js',
+      'scripts/libs/emojify-cdn.js',
+      'scripts/libs/jquery.zclip.js',
       'scripts/libs/ui-bootstrap-custom-tpls-0.13.0.js',
-      'bower_components/zeroclipboard/dist/ZeroClipboard.js',
       // Application Specific Files
       'app/js/namespace.js',
       'app/js/clipboardcopy.js',
@@ -112,10 +112,23 @@ gulp.task('scripts',['coffee'], function(){
 // Copy Fonts
 gulp.task('fonts', function(){
     gulp.src(paths.fonts)
-        .pipe(gulp.dest(paths.dist+'fonts'));
+      .pipe(gulp.dest(paths.dist+'fonts'));
+});
+
+// Copy Images 
+gulp.task("images", function(){
+  gulp.src(paths.images)
+    .pipe(gulp.dest(paths.dist+"img"));
 });
 
 // Watch For Changes
 gulp.task('watch', function(){
+  // Styles
   gulp.watch(paths.scss+'/**/*.scss', ['scss']);
-})
+
+  //Scripts 
+  gulp.watch(['app/**/**.js','app/**/*.coffee'], ['scripts']);
+  
+});
+
+gulp.task("default", ['scripts','scss','fonts']);
