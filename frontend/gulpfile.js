@@ -65,6 +65,13 @@ gulp.task('clean:css', function(){
     });
 });
 
+// Cleaning JS Output Directory
+gulp.task('clean:js', function(){
+    return del([paths.dist+'js'], options.del, function(){
+        console.log('Cleaning JS Complete');
+    });
+});
+
 // Cleaning Fonts Output Directory
 gulp.task('clean:fonts', function(){
     return del([paths.dist+'fonts'], options.del, function(){
@@ -73,7 +80,7 @@ gulp.task('clean:fonts', function(){
 });
 
 // Cleaning Everything
-gulp.task('clean:all', ['clean:css', 'clean:fonts'], function(){
+gulp.task('clean:all', ['clean:css', 'clean:fonts', "clean:js"], function(){
 });
 
 // SCSS Compilation, prefixing and minification.
