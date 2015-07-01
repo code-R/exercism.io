@@ -56,7 +56,8 @@ var paths = {
     coffee : [
       'app/js/app.coffee',
       'app/js/controllers/*.coffee'
-    ]
+    ],
+    images : ['bower_components/jstree/dist/themes/**/*']
 }
 // Cleaning CSS Output Directory
 gulp.task('clean:css', function(){
@@ -131,4 +132,4 @@ gulp.task('watch', function(){
   
 });
 
-gulp.task("default", ['scripts','scss','fonts']);
+gulp.task("default", ['scripts','scss','fonts', 'images']);
