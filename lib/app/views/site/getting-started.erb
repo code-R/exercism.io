@@ -1,47 +1,73 @@
-<div class="container getting-started">
-  <section class="page-header">
-    <h1>Hello</h1>
-  </section>
-  <article class="article-block">
-    <div class="article-contents">
-      <p>... and welcome to Hootcode!</p>
-      <p>Hootcode began as a way to add more features to the original <a href="exercism.io">exercism.io</a> project by adding git support, code analysis and more.</p>
-      <p>If you’re having trouble getting started, you’ll get the fastest answers <a href="https://github.com/hanumakanthvvn/exercism.io/issues" target="_blank">on GitHub</a>. The best place to start is to look at current issues. If you don’t see your issue listed there, please <a href="https://github.com/hanumakanthvvn/exercism.io/issues">submit a new issue</a>.</p>
+<div class="jumbotron hootcode-banner">
+  <div class="container page-get-started">
+    <h1 class="text-center">Get Started</h1>
+    <p class="text-center">A step wise guide to get you set up with Hootcode CLI &amp; Online Account</p>
+  </div>
+</div>
+<div class="container"data-spy="scroll" data-target="#get-started-nav">
+  
+  <div class="row">
+    <div class="col-sm-2">
+      <ul class="nav nav-pills nav-stacked" id="get-started-nav">
+        <li><a href="#login-with-github">1. Log In</a></li>
+        <li><a href="#download-cli">2. Download</a></li>
+        <li><a href="#configure">3. Configure</a></li>
+      </ul>
     </div>
-    <p>Thank you for your patience as we improve the site. We’re so happy to have you here.</p>
-  </article>
-  <article class="article-block">
-    <div class="article-contents">
-      <h2>Exercises</h2>
-      <p>
-        Fetch the current exercises using the <a href="/installing-cli">command-line client</a>. Exercises consisting of a test suite and a README are available in Ruby &amp; Java.
-      </p>
-      <p>
-        Write code using your usual tools. Make the tests pass. Keep the code as simple, readable, and expressive as you can.
-      </p>
-      <p>
-        Submit the code to the website. Other people who have completed the same assignment provide a code review, ask questions, and discuss trade-offs with you.
-      </p>
-      <p>
-        Based on their comments, revise your code and resubmit.
-      </p>
+    <div class="col-sm-10 instruction-cards">
+      <!-- Log In With GitHub -->
+      <div class="panel panel-default" id="login-with-github">
+        <div class="panel-step">1</div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-sm-4 col-sm-offset-4 text-center">
+              <span class="fa fa-github fa-fw" style="font-size:10em"></span>
+              <a href="/login" class="btn btn-primary btn-lg btn-block">Log In</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Download CLI -->
+      <div class="panel panel-default" id="download-cli">
+        <div class="panel-step">2</div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-sm-12">
+              <p>Head over to the terminal and download the CLI in <code>$HOME/bin/</code>.</p>
+              <div class="fancy-terminal">
+                <p>sudo su</p>
+                <p>curl -L http://hootcode.com/downloads/hootcode > /usr/local/bin/hootcode; chmod +x /usr/local/bin/hootcode</p>
+              </div>
+              <p>If you wist to install it somewhere else, <a href="/help#downloading-cli">follow these instructions</a>.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Configure  -->
+      <div class="panel panel-default" id="configure">
+        <div class="panel-step">3</div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-sm-12">
+                <% if !current_user.guest? %>
+
+                  <p>Configure the CLI to use your API key.</p>
+                  <div class="fancy-terminal">
+                    <p>hootcode configure --key=<i data-toggle="tooltip" data-placement="top" title="Your API Key"><%= current_user.key%></i></p>
+                  </div>
+                  <p>You can always find your API key in the <a href="/account">account</a> page.</p>
+                <% else %>
+                  <p class="text-center"><span class="fa fa-exclamation-triangle text-danger"></span> You must <a href="/login">log in</a> to get your API key.</p>
+                <% end %>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+
+
     </div>
-  </article>
-  <article class="article-block">
-    <div class="article-contents">
-      <h2 >Nitpicking</h2>
-      <p>
-        Think deeply about <a href="/nitpicking-code">how code can be improved</a>.
-      </p>
-      <p>
-        One particularly well-kept secret is that looking at someone's code with an eye towards finding ways of improving it can teach you more about writing readable code than receiving feedback on your own code.
-      </p>
-      <p>
-        Doing this forces you to think about why you make the trade-offs that you do, what in the code you are reacting to, why you are reacting to it, and how you might improve it.
-      </p>
-      <p>
-        There is rarely only one good solution to a problem. Asking questions and articulating your thoughts about these small problems can change your thinking about the issues you face in the code bases you work in on a day-to-day basis.
-      </p>
-    </div>
-  </article>
+  </div>
 </div>
