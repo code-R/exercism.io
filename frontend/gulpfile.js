@@ -5,7 +5,7 @@ var gulp       = require('gulp'),
     prefix     = require('gulp-autoprefixer'),
     del        = require('del'),
     concat     = require('gulp-concat'),
-    sass       = require('gulp-ruby-sass'),
+    scss       = require('gulp-sass'),
     coffee     = require('gulp-coffee'),
     ngAnnotate = require('gulp-ng-annotate');
 
@@ -86,7 +86,8 @@ gulp.task('clean:all', ['clean:css', 'clean:fonts', "clean:js"], function(){
 
 // SCSS Compilation, prefixing and minification.
 gulp.task('scss',['clean:css'], function(){
-  return sass(paths.scss+"application.scss")
+  return gulp.src(paths.scss+"application.scss")
+    .pipe(scss().on('error', scss.logError))
     .pipe(prefix(options.prefix))
     .pipe(minify(options.minify))
     .pipe(gulp.dest(paths.dist+'css'));
