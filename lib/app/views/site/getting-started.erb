@@ -4,32 +4,36 @@
     <p class="text-center">A step wise guide to get you set up with Hootcode CLI &amp; Online Account</p>
   </div>
 </div>
-<div class="container"data-spy="scroll" data-target="#get-started-nav">
+<div class="container">
   
   <div class="row">
     <div class="col-sm-2">
       <ul class="nav nav-pills nav-stacked" id="get-started-nav">
-        <li><a href="#login-with-github">1. Log In</a></li>
-        <li><a href="#download-cli">2. Download</a></li>
+        <li><a href="#login">1. Log In</a></li>
+        <li><a href="#download">2. Download</a></li>
         <li><a href="#configure">3. Configure</a></li>
+        <% if !current_user.guest? %>
+        <li><a href="#fetch">4. Fetch</a></li>
+        <li><a href="#next-steps">5. Next Steps</a></li>
+        <% end %>
       </ul>
     </div>
     <div class="col-sm-10 instruction-cards">
       <!-- Log In With GitHub -->
-      <div class="panel panel-default" id="login-with-github">
+      <div class="panel panel-default" id="login">
         <div class="panel-step">1</div>
         <div class="panel-body">
           <div class="row">
             <div class="col-sm-4 col-sm-offset-4 text-center">
               <span class="fa fa-github fa-fw" style="font-size:10em"></span>
-              <a href="/login" class="btn btn-primary btn-lg btn-block">Log In</a>
+              <a href="/login" class="btn btn-success btn-lg btn-block">Log In</a>
             </div>
           </div>
         </div>
       </div>
       
       <!-- Download CLI -->
-      <div class="panel panel-default" id="download-cli">
+      <div class="panel panel-default" id="download">
         <div class="panel-step">2</div>
         <div class="panel-body">
           <div class="row">
@@ -55,7 +59,7 @@
 
                   <p>Configure the CLI to use your API key.</p>
                   <div class="fancy-terminal">
-                    <p>hootcode configure --key=<i data-toggle="tooltip" data-placement="top" title="Your API Key"><%= current_user.key%></i></p>
+                    <p>hootcode configure --key=<em data-toggle="tooltip" data-placement="top" title="Your API Key"><%= current_user.key%></em></p>
                   </div>
                   <p>You can always find your API key in the <a href="/account">account</a> page.</p>
                 <% else %>
@@ -66,6 +70,38 @@
           </div>
         </div>
       </div>
+
+      <!-- Fetch  -->
+      <% if !current_user.guest? %>
+        <div class="panel panel-default" id="fetch">
+          <div class="panel-step">4</div>
+          <div class="panel-body">
+            <div class="row">
+              <div class="col-sm-12">
+                <p>Fetch exercises for all supported languages. You can optionally specify a particular language from <a href="/about">this</a> list.</p>
+                <div class="fancy-terminal">
+                  <p>hootcode fetch YOUR_FAVORITE_LANGUAGE</p>
+                </div>          
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+
+      <!-- Fetch  -->
+      <% if !current_user.guest? %>
+        <div class="panel panel-default" id="next-steps">
+          <div class="panel-step"><span class="fa fa-chevron-circle-right fa-fw"></span></div>
+          <div class="panel-body">
+            <div class="row">
+              <div class="col-sm-12">
+                <p>You are now ready to work on the exercises locally.</p>         
+                <p>Once you are ready to submit, follow these <a href="/help#submit-exercise">next steps</a>.</p>         
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
 
 
     </div>
