@@ -28,10 +28,6 @@ gem 'octokit'
 gem 'chrislo-sourceclassifier'
 
 # Frontend Gems
-gem 'sass'
-gem 'compass'
-gem 'bootstrap-sass'
-gem 'font-awesome-sass'
 gem 'kss'
 
 group :test, :development do
