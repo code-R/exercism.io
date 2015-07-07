@@ -206,6 +206,10 @@ footer {
 .navbar-link-icon {
   margin-right:5px
 }
+.navbar-link-icon+.badge {
+  margin-top:-5px;
+  margin-left:-5px;
+}
 
 // .how-it-works {
 //   background:url("../img/how-it-works-off.png") no-repeat 0 100%;
