@@ -5,28 +5,10 @@
     - Reduce selector specificity.
 
 **/
+@import 'libraries/variables';
+@import 'themes/hootcode';
 h1, h2 {
   color: #c66606;
-}
-
-.navbar-inverse .navbar-nav > .open > a,
-.navbar-inverse .navbar-nav > .open > a:focus,
-.navbar-inverse .navbar-nav > .open > a:hover {
-  background-color:transparent;
-}
-#navbar ul li ul li a {
-  color:black;
-}
-#navbar ul li ul li a:hover {
-  background-color:#ce6b05;
-  color:#fff;
-}
-#navbar > ul {
-  margin-top:15px;
-}
-.nav > li > a:focus,
-.nav > li > a:hover {
-  background-color:transparent;
 }
 
 /*Footer Links*/
@@ -57,24 +39,24 @@ footer {
   bottom:0;
   background:#fff url("../img/bg_footer.png") repeat-x;
   width:100%;
+  height:50px;
+  line-height:50px;
 }
 
 .landing-image-container {
   margin-top:-325px;
 }
 
-.jumbotron {
-  background-color:#fff;
-}
-
 .navbar {
-  border:0;
   -webkit-transition:0.3s;
        -o-transition:0.3s;
           transition:0.3s;
 }
+.navbar-brand {
+  padding:0;
+}
 .navbar.scrolled {
-  box-shadow:0 4px 10px 0 rgba(0,0,0,0.4);
+  box-shadow:0 2px 6px 0 rgba(0,0,0,0.3);
 }
 
 .steps {
@@ -220,59 +202,38 @@ footer {
 .languages {
   margin-bottom:50px;
 }
-
-.navbar-inverse {
-  background:#fff url("../img/bg_header_big.png") repeat-x;
-  height:80px;
-}
-
-.navbar-brand {
-  height:auto;
-  padding:0;
-}
-
-#navbar ul li a {
-  color:#f3dac0;
-  font-size:16px;
-}
-
 /* using icon fonts would be better.*/
-.nav-links {
-  width:32px;
-  height:32px;
-  margin-top:-6px;
-  display:inline-block;
-  float:left;
-  margin-right:5px;
+.navbar-link-icon {
+  margin-right:5px
+}
+.navbar-link-icon+.badge {
+  margin-top:-5px;
+  margin-left:-5px;
 }
 
-.how-it-works {
-  background:url("../img/how-it-works-off.png") no-repeat 0 100%;
-}
+// .how-it-works {
+//   background:url("../img/how-it-works-off.png") no-repeat 0 100%;
+// }
 
-.help {
-  background:url("../img/help-off.png") no-repeat 0 100%;
-}
+// .help {
+//   background:url("../img/help-off.png") no-repeat 0 100%;
+// }
 
-.login {
-  background:url("../img/login-github-off.png") no-repeat 0 100%;
-}
+// .login {
+//   background:url("../img/login-github-off.png") no-repeat 0 100%;
+// }
 
-#navbar a:hover .how-it-works {
-  background:url("../img/how-it-works-on.png") no-repeat 0 100%;
-}
+// #navbar a:hover .how-it-works {
+//   background:url("../img/how-it-works-on.png") no-repeat 0 100%;
+// }
 
-#navbar a:hover .help {
-  background:url("../img/help-on.png") no-repeat 0 100%;
-}
+// #navbar a:hover .help {
+//   background:url("../img/help-on.png") no-repeat 0 100%;
+// }
 
-#navbar a:hover .login {
-  background:url("../img/login-github-on.png") no-repeat 0 100%;
-}
-
-#navbar ul li a:hover {
-  color:#fff;
-}
+// #navbar a:hover .login {
+//   background:url("../img/login-github-on.png") no-repeat 0 100%;
+// }
 
 
 @font-face {
@@ -298,22 +259,17 @@ footer {
   text-align:center;
 }
 
+footer {
+  color:#fff;
+  font-size: .8em;
+}
+
 footer a {
   color:#ddd;
   text-decoration:none;
 }
-
-footer nav li a:hover {
-  text-decoration:none;
-  background-color:transparent;
-}
-.footer-header .navbar-brand {
-  margin-top:5px;
-}
-.footer-copyright {
+footer a:hover {
   color:#fff;
-  margin-top:15px;
-  font-size:13px;
 }
 
 .landing-image-container img {
@@ -324,48 +280,48 @@ footer nav li a:hover {
 =            Navbar Submenu            =
 ======================================*/
 
-.dropdown-submenu {
-  position:relative;
-}
-.dropdown-submenu > .dropdown-menu {
-  width:100%;
-  top:0;
-  left:100%;
-  margin-top:-6px;
-  margin-left:-1px;
-  -webkit-border-radius:0 6px 6px 6px;
-     -moz-border-radius:0 6px 6px 6px;
-          border-radius:0 6px 6px 6px;
-}
-.dropdown-submenu:hover > .dropdown-menu {
-  display:block;
-}
-.dropdown-submenu > a:after {
-  display:block;
-  content:" ";
-  float:right;
-  width:0;
-  height:0;
-  border-color:transparent;
-  border-style:solid;
-  border-width:5px 0 5px 5px;
-  border-left-color:#ccc;
-  margin-top:5px;
-  margin-right:-10px;
-}
-.dropdown-submenu:hover > a:after {
-  border-left-color:#fff;
-}
-.dropdown-submenu.pull-left {
-  float:none;
-}
-.dropdown-submenu.pull-left > .dropdown-menu {
-  left:-100%;
-  margin-left:10px;
-  -webkit-border-radius:6px 0 6px 6px;
-     -moz-border-radius:6px 0 6px 6px;
-          border-radius:6px 0 6px 6px;
-}
+// .dropdown-submenu {
+//   position:relative;
+// }
+// .dropdown-submenu > .dropdown-menu {
+//   width:100%;
+//   top:0;
+//   left:100%;
+//   margin-top:-6px;
+//   margin-left:-1px;
+//   -webkit-border-radius:0 6px 6px 6px;
+//      -moz-border-radius:0 6px 6px 6px;
+//           border-radius:0 6px 6px 6px;
+// }
+// .dropdown-submenu:hover > .dropdown-menu {
+//   display:block;
+// }
+// .dropdown-submenu > a:after {
+//   display:block;
+//   content:" ";
+//   float:right;
+//   width:0;
+//   height:0;
+//   border-color:transparent;
+//   border-style:solid;
+//   border-width:5px 0 5px 5px;
+//   border-left-color:#ccc;
+//   margin-top:5px;
+//   margin-right:-10px;
+// }
+// .dropdown-submenu:hover > a:after {
+//   border-left-color:#fff;
+// }
+// .dropdown-submenu.pull-left {
+//   float:none;
+// }
+// .dropdown-submenu.pull-left > .dropdown-menu {
+//   left:-100%;
+//   margin-left:10px;
+//   -webkit-border-radius:6px 0 6px 6px;
+//      -moz-border-radius:6px 0 6px 6px;
+//           border-radius:6px 0 6px 6px;
+// }
 
 /*-----  End of Navbar Submenu  ------*/
 
@@ -379,3 +335,66 @@ footer nav li a:hover {
 }
 
 /*-----  End of Temporary Fixes  ------*/
+
+.page-get-started {
+  font-size:18px;
+}
+/*======================================
+=            Fancy Terminal            =
+======================================*/
+
+.fancy-terminal {
+  margin:20px 0;
+  padding:30px 10px 10px;
+  background: #333;
+  font-family:$font-family-monospace;
+  border-radius:6px;
+  background-image: linear-gradient(#ddd 0, #aaa 20px,#333 20px);
+}
+
+.fancy-terminal p {
+  color:lighten($hootcode-brand, 20%);
+  font-weight:bold;
+  margin:10px;
+}
+.fancy-terminal p:before {
+  content:"~ ";
+  color:cyan;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;  
+}
+
+/*-----  End of Fancy Terminal  ------*/
+
+.instruction-cards {
+  font-size:18px;
+}
+.instruction-cards .panel {
+  margin-bottom:4em;
+  position: relative;
+}
+.instruction-cards .panel-body {
+  padding:4em;
+}
+.panel-step {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background-color: rgb(206, 107, 5);
+  left: -25px;
+  border-radius: 50%;
+  top: -25px;
+  box-shadow: 2px 2px 4px 0 rgba(0,0,0,.3);
+  text-align: center;
+  line-height: 50px;
+  font-size: 32px;
+  color: #fff;
+}
+.hootcode-banner {
+  background:url(http://localhost:4567/img/bg_header_big.png);
+  color:#fff;
+  text-shadow:1px 1px rgba(0,0,0,.4);
+}

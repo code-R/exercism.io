@@ -1,4 +1,4 @@
-<nav class="navbar navbar-inverse navbar-fixed-top">
+<nav class="navbar navbar-default navbar-fixed-top primary-nav">
     <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -8,18 +8,15 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="/">
-                <img src="/img/logo.svg" height="80px" width="260px">
+                <img src="/img/logo.svg" height="50px">
             </a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a href="/getting-started">
-                        <span class="nav-links how-it-works"></span>
-                        How it works
-                    </a>
+                    <a href="/getting-started"><span class="fa fa-play-circle fa-lg navbar-link-icon fa-fw"></span>Get Started </a>
                 </li>
-                <li class="dropdown">
+                <!-- <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false"><span class="nav-links help"></span>
                         Help&nbsp;<span class="caret"></span>
                     </a>
@@ -33,6 +30,10 @@
                             </ul>
                           </li>
                         </ul>
+                </li> -->
+                <li>
+                    <a href="/faq">
+                        <span class="fa fa-question-circle fa-lg navbar-link-icon fa-fw"></span>FAQ</a>
                 </li>
                 <% if !current_user.guest? %>
                   <%= erb :"application/nav/nitpicker_languages" %>
@@ -40,8 +41,7 @@
                   <%= erb :"application/nav/notifications" %>
                   <%= erb :"application/nav/account" %>
                 <% else %>
-                  <li><a href="/login"><span class="nav-links login"></span>
-                        Login</a></li>
+                  <li><a href="/login"><span class="fa fa-github fa-lg navbar-link-icon fa-fw"></span>Log In</a></li>
                 <% end %>
                 <% if settings.development? %>
                   <%= erb :"application/nav/backdoor" %>

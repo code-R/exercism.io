@@ -5,9 +5,9 @@
   </a>
 
   <ul class="dropdown-menu" role="menu">
-    <li><a role="menuitem" tabindex="-1" href="/account">Account</a></li>
-    <li><a role="menuitem" tabindex="-1" href="/nits/<%= current_user.username %>/stats">Nit stats</a></li>
-    <li><a role="menuitem" tabindex="-1" href="/looks">Recently Viewed</a></li>
-    <li><a role="menuitem" tabindex="-1" href="/logout">Log Out</a></li>
+    <li><a role="menuitem" href="/account"><span class="navbar-link-icon fa fa-user fa-fw"></span>Account</a></li>
+    <li><a role="menuitem" href="/nits/<%= current_user.username %>/stats"><span class="navbar-link-icon fa fa-thumb-tack fa-fw"></span>Nit Picks</a></li>
+    <li><a role="menuitem" href="/looks"><span class="navbar-link-icon fa fa-eye fa-fw"></span>Recents</a></li>
+    <li><a role="menuitem" href="/logout"><span class="navbar-link-icon fa fa-sign-out fa-fw"></span>Log Out</a></li>
   </ul>
 </li>
