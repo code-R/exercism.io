@@ -22,7 +22,7 @@ class StaticPageTest < AcceptanceTestCase
       # click_on 'Welcome'
     end
 
-    assert_content "How it works"
-    assert_content "Help"
+    assert_content "Get Started"
+    assert_content "FAQ"
   end
 end
