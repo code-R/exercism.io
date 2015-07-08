@@ -10,10 +10,10 @@
     <div class="col-sm-2">
       <ul class="nav nav-pills nav-stacked" id="get-started-nav">
         <li><a href="#login">1. Log In</a></li>
-        <li><a href="#download">2. Download</a></li>
-        <li><a href="#configure">3. Configure</a></li>
+        <li><a href="#download">2. Download CLI</a></li>
+        <li><a href="#configure">3. Configure CLI </a></li>
         <% if !current_user.guest? %>
-        <li><a href="#fetch">4. Fetch</a></li>
+        <li><a href="#fetch">4. Fetch Exercises</a></li>
         <li><a href="#next-steps">5. Next Steps</a></li>
         <% end %>
       </ul>
@@ -24,10 +24,23 @@
         <div class="panel-step">1</div>
         <div class="panel-body">
           <div class="row">
-            <div class="col-sm-4 col-sm-offset-4 text-center">
-              <span class="fa fa-github fa-fw" style="font-size:10em"></span>
-              <a href="/login" class="btn btn-success btn-lg btn-block">Log In</a>
-            </div>
+            
+              
+              <% if !current_user.guest? %>
+                <div class="col-sm-4 col-sm-offset-4 text-center text-success">
+                  <span class="fa fa-check-circle fa-fw" style="font-size:10em"></span>
+                </div>
+                <div class="row">
+                  <div class="col-sm-12">
+                    <div class="alert alert-success text-center">You are logged in. Great! Go ahead and <a href="#download">Download</a> the CLI.</div>
+                  </div>
+                </div>
+              <% else %>
+                <div class="col-sm-4 col-sm-offset-4 text-center">
+                  <span class="fa fa-github fa-fw" style="font-size:10em"></span>
+                  <a href="/login" class="btn btn-primary btn-lg btn-block">Log In</a>
+                </div>
+              <% end %>
           </div>
         </div>
       </div>
@@ -44,7 +57,8 @@
                 <p>curl -L http://hootcode.com/downloads/hootcode > /usr/local/bin/hootcode</p>
                 <p>chmod +x /usr/local/bin/hootcode</p>
               </div>
-              <p>If you wist to install it somewhere else, <a href="/help#downloading-cli">follow these instructions</a>.</p>
+             <!-- <p>If you wist to install it somewhere else, <a href="/help#downloading-cli">follow these instructions</a>.</p>-->
+             <p>Go ahead and <a href="#configure">configure</a> the CLI.</p>
             </div>
           </div>
         </div>
@@ -79,9 +93,9 @@
           <div class="panel-body">
             <div class="row">
               <div class="col-sm-12">
-                <p>Fetch exercises for all supported languages. You can optionally specify a particular language from <a href="/about">this</a> list.</p>
+                <p>Fetch exercises from supported languages <code>[for now Java].</code>
                 <div class="fancy-terminal">
-                  <p>hootcode fetch YOUR_FAVORITE_LANGUAGE</p>
+                  <p>hootcode fetch java</p>
                 </div>
                 <p>By default, all the fetched exercises can be found in <code>$HOME/hootcode</code> directory.</p>          
               </div>
@@ -98,7 +112,7 @@
             <div class="row">
               <div class="col-sm-12">
                 <p>You are now ready to work on the exercises locally.</p>         
-                <p>Once you are ready to submit, follow these <a href="/help#submit-exercise">next steps</a>.</p>         
+                <p>Once you are ready to submit, follow these <a href="/submit-assignment">next steps</a>.</p>         
               </div>
             </div>
           </div>

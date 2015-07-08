@@ -1,35 +1,43 @@
-<div class="container">
-  <%= erb :"onboarding/progress_bar", locals: {step: dashboard.next_action} %>
-  <section class="main">
-    <article class="article-block">
-      <div class="article-contents">
-        <h2>Getting Set Up</h2>
-        <p>There's documentation about how to get the language environments set up on the <a href="#">help</a> site.</p>
+<br/>
+<div class="container about">
+  <div class="title">
+    <h1>Submit Assginment</h1>
+  </div>
+  <br/>
+  <section>
+    <p>After you&#39;ve <a href="/getting-started#fetch">fetched the exercises</a> and written an implementation, then you&#39;re ready to submit the code to HootCode to receive feedback.</p>
+    <p>You need to submit the code through <code>Github</code>.</p>
+    <!--<div class="title">
+    <h2>Submit Assignment using DB</h2>
+  </div>
+<pre><code class="lang-bash">hootcode submit path/to/your/code.ext</code></pre>
+<p>For example, if you have been working on the <code>leap</code> exercise in Ruby, you might be in the same directory as the test suite and the code:</p>
+<pre><code class="lang-bash">cd ~/hootcode/ruby/leap
+ls -1</code></pre>
+<p>This would output the following:</p>
+<pre><code>leap<span class="variable">.rb</span>
+leap_test<span class="variable">.rb</span>
+README<span class="variable">.md</span></code></pre>
+<p>Then you would submit the code with the following command:</p>
+<pre><code class="lang-bash">hootcode submit leap.rb</code></pre>-->
+<div class="title">
+    <h2>Steps to submit assignment</h2>
+</div>
+<p>1) Create a Github repository in the name(case-sensitive) of the assignment and clone it.</p>
+       <p>For example, if your assignment is <code>web-crawler</code> under java, then the url should be as 
+       <% if !current_user.guest? %>
+          <code>git@github.com/<%= current_user.username %>/web-crawler</code>.</p>
+        <% else %>
+            <code>git@github.com/github-username/web-crawler</code>.</p>
+        <% end %>
+<p>2) Copy the contents of Exercise Folder and Create file(s) in the repository under <code>src/</code> folder, consisting the solution for the exercise.</p>
+<p>3) Commit the file(s) and push the changes to github.</p>
+<p>4) Copy the latest commit-id </p>
+<p>5) Go to the exercise folder (eg ~/hootcode/java/web-crawler) and submit the commit-id to hootcode using 
+<pre>hootcode gsubmit commit-id
+<br/> eg: hootcode gsubmit aeb9c67gh3j6k78fdgth</pre>
+<p>6) You can make your changes in the github repository and  follow the steps 3 to 5 to reflect the same in Hootcode.</p>
 
-        <h2>Solving Hootcode Problems</h2>
 
-        <p>The test suites vary a bit from language to language.</p>
-
-        <p>Some of the languages use skipped or pending tests in order to simulate the Test-Driven Development (TDD) process.</p>
-
-        <p>In these languages, only the first test will be active. Once you write enough code to get that test passing, you'll need to open up the test suite and edit it to remove the <em>skip</em> to activate the next test.</p>
-
-        <p>Work through one failing test at a time.</p>
-
-        <p>Once you've got the whole test suite passing, take a few minutes to look at the code you have and think about how it could be tweaked to be more readable and expressive.</p>
-
-        <p>If everything is up and fine then create a Github repo in the name of the assignment and push entire code to your Github specified repo.</p>
-       <p>Say if your assignment is <pre>prime-calcualtor</pre> your github repo should reflect the same(case-sensitive)</p>
-       <p>Then save the commit id in a file and submit the commit id file using the following command:</p>
-
-        <pre>
-        hootcode submit path/to/commit-id.ext
-        </pre>
-
-        <h2>Getting Help</h2>
-
-        <p>If you get stuck and can't figure out how to get the test passing, submit what you have, then go to the submission page for your exercise and add a comment describing what you tried, what you're trying to do, and where you got stuck.</p>
-      </div>
-    </article>
   </section>
 </div>

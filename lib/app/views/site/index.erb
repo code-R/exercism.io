@@ -27,7 +27,11 @@
             </div>
 
             <div class="col-xs-12 col-sm-6 col-md-3">
-                <a href="#" class="step">
+                <% if !current_user.guest? %>
+                <a href="/getting-started#fetch" class="step">
+                <% else%>
+                <a href="/getting-started#login" class="step">
+                <% end %>
                     <div class="circle-outer">
                         <div class="circle-inner">
                             <div class="hex hex-small">

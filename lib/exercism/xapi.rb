@@ -1,6 +1,6 @@
 module Xapi
   def self.exercises_api_url
-    ENV.fetch('EXERCISES_API_URL') { "http://x.exercism.io" }
+    ENV.fetch('EXERCISES_API_URL') { "http://54.172.126.241" }
   end
 
   def self.exists?(language, slug)

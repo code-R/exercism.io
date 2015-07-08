@@ -55,7 +55,7 @@ module ExercismWeb
         end
 
         def root_path
-          '/'
+          '/getting-started'
         end
 
         def h(value)
