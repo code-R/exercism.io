@@ -2,7 +2,7 @@
 $(function() {
 
     $(window).on("scroll", function(){
-        $(".primary-nav").toggleClass("scrolled", window.scrollY > 0);
+        $("header .navbar").toggleClass("scrolled", window.scrollY > 0);
     });
 
     $(".pending-submission, .work").each(function(index, element) {
