@@ -48,7 +48,7 @@ end
 class Ruby < CodeAnalyzer
   def run
     unless ENV.fetch('RACK_ENV') == "test"
-      file_name = "#{settings.root}/rubocop_tmp/test_#{user.id}.rb"
+      file_name = "#{AppSettings.root_path}/rubocop_tmp/test_#{user.id}.rb"
       rubocop_code_file = File.new(file_name, "w+")
       rubocop_code_file.write code
       rubocop_code_file.rewind

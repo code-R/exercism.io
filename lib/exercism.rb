@@ -2,8 +2,8 @@ require "active_support" # Must be required before active_record
 require "active_record"
 require "faraday"
 
+require "exercism/app_settings"
 require "exercism/explore"
-
 require "exercism/assumable_user"
 require "exercism/onboarding"
 require "exercism/progress_bar"

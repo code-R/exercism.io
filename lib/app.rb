@@ -27,6 +27,7 @@ module ExercismWeb
   class App < Sinatra::Base
     configure do
       enable :sessions
+      AppSettings.root_path = settings.root
       set :session_secret, ENV.fetch('SESSION_SECRET') { "Need to know only." }
     end
 
