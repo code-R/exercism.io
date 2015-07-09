@@ -26,7 +26,8 @@ db/migrations.sql
 # Frontend
 node_modules
 bower_components
-frontend/bundle
+lib/app/public/css/application.css
+lib/app/public/js/hootcode.min.js
 .gulp-scss-cache
 
 # PHP
