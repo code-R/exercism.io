@@ -63,7 +63,13 @@ var paths = {
 gulp.task('clean:css', function(){
     return del([paths.dist+'css'], options.del, function(){
         console.log('Cleaning CSS Complete');
+        fs = require('fs');
+        fs.readFile('../lib/app/public/css/application.css', 'utf8', function(err, data){
+          console.log("ERROR", err);
+          console.log("DATA", data);
+        });
     });
+
 });
 
 // Cleaning JS Output Directory
@@ -133,4 +139,9 @@ gulp.task('watch', function(){
   
 });
 
-gulp.task("default", ['scripts','scss','fonts', 'images']);
+gulp.task("default", ['scripts','scss','fonts', 'images'], function(){
+  fs.readFile('../lib/app/public/css/application.css', 'utf8', function(err, data){
+    console.log("ERROR", err);
+    console.log("DATA", data);
+  });
+});
