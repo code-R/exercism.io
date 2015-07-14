@@ -40,6 +40,7 @@ var paths = {
       'bower_components/bootstrap-sass/assets/javascripts/bootstrap.js',
       'bower_components/jstree/dist/jstree.js',
       'bower_components/theia-sticky-sidebar/js/theia-sticky-sidebar.js',
+      'bower_components/bootstrap-autohidingnavbar/dist/jquery.bootstrap-autohidingnavbar.js',
       'scripts/libs/emojify-cdn.js',
       'scripts/libs/jquery.zclip.js',
       'scripts/libs/ui-bootstrap-custom-tpls-0.13.0.js',

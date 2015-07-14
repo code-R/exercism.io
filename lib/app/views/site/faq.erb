@@ -1,0 +1,240 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4">
+            <ul class="nav nav-pills nav-stacked" id="faq-nav">
+              <li role="presentation" ><a href="#what-is-hootcode">What is Hootcode</a></li>
+              <li role="presentation"><a href="#install">Installing Hootcode CLI</a></li>
+              <li role="presentation"><a href="#configure">Configuring CLI</a></li>
+              <li role="presentation"><a href="#fetch">Fetching Exercises</a></li>
+              <li role="presentation"><a href="#available-lang-and-exercises">Available Language &amp; Exercises</a></li>
+              <li role="presentation"><a href="#working">Working on Exercises</a></li>
+              <li role="presentation"><a href="#commit-to-github">Committing to GitHub</a></li>
+              <li role="presentation"><a href="#submit">Submitting an Exercise</a></li>
+              <li role="presentation"><a href="#iterations-and-exercises">Iterations &amp; Exercises</a></li>
+              <li role="presentation"><a href="#api-key">The API Key</a></li>
+            </ul> 
+        </div>
+        <div class="col-sm-8">
+            <div id="what-is-hootcode">
+                <h2 id="what-is-hootcode-">What is Hootcode?</h2>
+                <p>Hootcode is a platform that helps you get mentored on exercises on different languages. </p>
+                <h3 id="how-does-it-help-">How does it help?</h3>
+                <ul>
+                <li>It promotes learning by doing.</li>
+                <li>It makes you learn the best practices and how to organize your projects.</li>
+                <li>It helps you connect to like-minded people.</li>
+                <li>It provides you with plethora of solutions to each problem so you can learn better.</li>
+                </ul>
+                <h3 id="what-can-i-do-">What can I do?</h3>
+                <ul>
+                <li><strong>Practice</strong> - You can work of various exercises and submit them in iterations.</li>
+                <li><strong>Get mentored</strong> - You get comments and guidance from fellow developers on how you can make your code better.</li>
+                <li><strong>Help someone get better</strong> - You can also provide comments to other developers on how they can write better code. You also get to learn just by doing that.</li>
+                <li><strong>Repeat</strong></li>
+                </ul>  
+                <h3 id="let-s-get-started-get-started-">Let's <a href="/getting-started" target="_blank">Get Started!</a></h3>
+            </div>
+
+            <hr>
+
+            <div id="install">
+                <h2>Installing Hootcode CLI</h2>
+                <p>Hootcode CLI( Command Line Interface ) let's you fetch and submit exercises from your system's terminal. In fact, you'll do most Hootcode operations from the terminal.</p>
+                <h3>Automated Installation( Recommended )</h3>
+                <p>Make sure you have <code>curl</code> installed. If not, you can install it as follows.</p>
+                <p><strong>Linux :</strong></p>
+                <div class="fancy-terminal">
+                    <p>sudo apt-get install curl</p>
+                </div>
+                <p><strong>OSX( via <a href="http://brew.sh/">homebrew</a> ) :</strong></p>
+                 <div class="fancy-terminal">
+                    <p>brew install curl</p>
+                </div>
+                <p>Now install the CLI.</p>
+                <div class="fancy-terminal">
+                    <p>sudo su</p>
+                    <p>curl -L http://hootcode.com/downloads/hootcode > /usr/local/bin/hootcode</p>
+                    <p>chmod +x /usr/local/bin/hootcode</p>
+                </div>
+                <p>This installs the hootcode binary in <code>/usr/local/bin</code> directory.</p>
+                <h3>Verify Installation</h3>
+                <div class="fancy-terminal">
+                    <p>hootcode -v</p>
+                </div>
+                <h3>Manual Installation</h3>
+                <p>If you wish to install it in a different place other than <code>/usr/local/bin</code>, then download the binary in a desired directory and <a href="https://www.google.co.in/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=how+to+add+directory+to+path">add it to PATH</a>.</p>
+            </div>
+
+            <hr>
+
+            <div id="configure">
+                <h2>Configuring CLI</h2>
+                <p>After you have downloaded the CLI, you need to configure it with your API key so you can submit exercises. Once you login with GitHub, your API key can be found in the <a href="/account" target="_blank">Account</a> page.</p>
+                <div class="fancy-terminal">
+                    <p>hootcode configure --key=YOUR_API_KEY</p>
+                </div>
+                <p>The configuration resides in a <code>.hootcode.json</code> file in your home directory. You can choose to edit it manually to add your API key but it's recommended you use the command line.</p>
+            </div>
+
+            <hr>
+
+            <div id="fetch">
+                <h2>Fetching Exercises</h2>
+                <h3>For a Specific Language</h3>
+                <div class="fancy-terminal">
+                    <p>hootcode fetch java</p>
+                </div>
+                <p>This downloads the <strong>first exercise</strong> available for <strong>Java</strong> inside <code>$HOME/hootcode</code> directory by default. </p>
+                <p>You can find the list of currently supported language <a href="/about">here</a>. We'll add more language support soon.</p>
+                <p>You can even see the supported language on the command line.</p>
+                <div class="fancy-terminal">
+                    <p>hootcode tracks</p>
+                </div>
+                <h3>A Specific Exercise</h3>
+                <p>You can download a specific exercise by providing the exercise name in the fetch command.</p>
+                <div class="fancy-terminal">
+                    <p>hootcode fetch LANGUAGE EXERCISE</p>
+                </div>
+                <p>To get a list of available exercises available for a language, run:</p>
+                <div class="fancy-terminal">
+                    <p>hootcode list LANGUAGE</p>
+                </div>
+                <h3>For All Supported Languages</h3>
+                <div class="fancy-terminal">
+                    <p>hootcode fetch</p>
+                </div>
+                <p>Not specifying a language during fetch will download the first problem for all supported languages. </p>
+                <h3>Fetching the Next Exercise</h3>
+                <p>Once you are done with an exercise and you want to download the next exercise, simply run <code>hootcode fetch</code> or <code>hootcode fetch LANGUAGE</code>. This will inform you about the newly downloaded exercise, where it resides and also the exercises you have not yet submitted yet.</p>
+            </div>
+
+            <hr>
+
+            <div id="available-lang-and-exercises">
+                <h2>Available Languages & Exercises</h2>
+                <p>To get a list of languages supported by Hootcode, run:</p>
+                <div class="fancy-terminal">
+                    <p>hootcode tracks</p>
+                </div>
+                <p>This lists all the languages, with their slug and the number of exercises available for each of them.</p>
+                <p>To get a list of exercises available in a particular language, run:</p>
+                <div class="fancy-terminal">
+                    <p>hootcode list LANGUAGE</p>
+                </div>
+                <p><strong>Note :</strong> LANGUAGE is the slug for a particular language. E.g - <strong>java</strong> for Java or <strong>ruby</strong> for Ruby.</p>
+            </div>
+
+            <hr>
+
+            <div id="working">
+                <h2>Working on Exercises</h2>
+                <h3>Find Exercises</h3>
+                <p>By default, all the downloaded exercises reside in <code>$HOME/hootcode</code> directory in your system.</p>
+                <h3>Write Code</h3>
+                <p>You can use any editor or tool you want to work on exercises locally. Example - Use Eclipse or IntelliJ IDEA for Java exercises. Try to follow best practices as much as you can. If you miss something, mentors are here to guide.</p>
+                <h3>Test</h3>
+                <p>With certain exercises, you may also find files to write test cases. Writing code along with tests is recommended. Use TDD or BDD style, whatever suits you better.</p>
+                <p>Different exercises, however, will require you to have the testing environment set up properly. These instructions can be found in the project specific <code>README.md</code> file.</p>
+                <h3>Use .gitignore</h3>
+                <p>Since the primary medium for maintaining iterations will be GitHub, try to add a <code>.gitignore</code> file to save yourself from committing files you probably don't want to. Example - <code>.class</code> files, generated directories etc.</p>
+                <p>More on <code>.gitignore</code> <a href="http://git-scm.com/docs/gitignore">here</a>.</p>
+            </div>
+
+            <hr>
+
+            <div id="commit-to-github">
+                <h2>Committing to GitHub</h2>
+                <p>All the code for all iterations are managed via GitHub repositories. If you don't know about git or GitHub, follow the below resources to get a head start.</p>
+                <ul>
+                    <li><a href="https://git-scm.com/book/en/v2/Getting-Started-Git-Basics">Getting Started - Git Basics</a></li>
+                    <li><a href="https://git-scm.com/book/en/v2">Git SCM - Book</a></li>
+                    <li><a href="https://guides.github.com/">GitHub Guides</a></li>
+                </ul>
+
+                <h3>Initialize</h3>
+                <p>You need to initialize the exercise directory as a git repository before you can do further operations. Go to the exercise root and run:</p>
+                <div class="fancy-terminal">
+                    <p>git init</p>
+                </div>
+                <h3>Commit Code</h3>
+                <p>Once you have worked on exercise and are ready to submit, go to the root directory of the exercise and stage the files you want to commit.</p>
+                <div class="fancy-terminal">
+                    <p>
+                        git add path/to/file/to/commit.ext
+                    </p>
+                </div>
+                <p>Now commit the code with a nice, meaningful message.</p>
+                <div class="fancy-terminal">
+                    <p>git commit -m "COMMIT_MESSAGE"</p>
+                </div>
+                <h3>Push to GitHub Repository</h3>
+                <p>Create an empty repository in your GitHub account with the same name as the exercise. Assuming the exercise and GitHub repository name is <code>file-browser</code>, let's add a remote, call it <strong>origin</strong>, to it.</p>
+                <div class="fancy-terminal">
+                    <p>git remote add origin <em>https://github.com/USERNAME/file-browser.git</em></p>
+                </div>
+                <p>Now, push the local commits to the GitHub repository.</p>
+                <div class="fancy-terminal">
+                    <p>git push origin master</p>
+                </div>
+                <p>This assumes you are working on the <strong>master</strong> branch.</p>
+                <p>Voila! You are done!</p>
+            </div>
+
+            <hr>
+
+            <div id="submit">
+                <h2>Submitting an Exercise</h2>
+                <p>Once you have <a href="#commit-to-github">pushed your code to GitHub</a>, you can submit the iteration to Hootcode. Hootcode CLI expects a commit hash to be provided during submit.</p>
+                <h3>Find Commit Hash</h3>
+                <p>Assuming you have committed all your changes, run any of the following to get the latest commit hash.</p>
+                <div class="fancy-terminal">
+                    <p>git log -1</p>
+                </div>
+                <p><strong>OR</strong></p>
+                <div class="fancy-terminal">
+                    <p>git rev-parse HEAD</p>
+                </div>
+                <p>Copy the commit hash which will be required in the next step.</p>
+                <h3>Submitting</h3>
+                <p>Now that you have the commit hash, go to the root of the exercise you want to submit and run:</p>
+                <div class="fancy-terminal">
+                    <p>hootcode gsubmit COMMIT_HASH</p>
+                </div>
+                <p>If the submit is successful, the terminal should show give you a URL to the submission.</p>
+            </div>
+            <hr>
+            <div id="iterations-and-exercises">
+                <h2>Iterations &amp; Exercises</h2>
+                <p>Iterations are the way you learn, improve your skills and finish an exercise on Hootcode. Every time you submit an exercise, an iteration is created on Hootcode.</p>
+                <p>A particular iteration refers to the code related to a particular commit hash provided during the submission via command line.</p>
+                <h3>Where to find iterations?</h3>
+                <p>The <a target="_blank" href="/account">Account</a> page lists all the exercises you have worked upon so far with the current iteration number. You can also click on a particular exercise name which takes you to the details of the submission including the files, code and the comments you have got for the iteration.</p>
+                <h3>Iterations Comments</h3>
+                <p>Each iteration has it's own thread of comments. Mentors look at your current work and provide their feedback on a specific iteration.</p>
+                <h3>How to mark an exercise complete?</h3>
+                <ul>
+                    <li>Go to <a target="_blank" href="/account">Account</a> page.</li>
+                    <li>Find the exercise you want to complete and click on the name.</li>
+                    <li>In the submission details page, Click on <strong>Manage</strong> and select <strong>Mark as done</strong>.</li>
+                    <li>If you wish to delete the current submission, Click on <strong>Delete</strong>.</li>
+                </ul>
+                <h3>How to find other submissions on an exercise?</h3>
+                On the submission details page, Click on the <strong>binoculars</strong> <i class="fa fa-binoculars"></i> button to view submissions by others on the same exercise.
+            </div>
+            <hr>
+            <div id="api-key">
+                <h2>The API Key</h2>
+                <p>The API key is your identity on Hootcode. All submission require the Hootcode CLI to be configured with it.</p>
+                <h3>How to get an API key?</h3>
+                <p>All you have to do is to <a href="/login" target="_blank">login</a> with GitHub and an API key will be generated for you.</p>
+                <h3>Where can I find it?</h3>
+                <p>You can find your API key in the <a target="_blank" href="/account">Account</a> page. </p>
+                <h3>How to configure the CLI with an API key?</h3>
+                <p>Go through the <a href="#configure">Configuring CLI</a> section for details.</p>
+                <h3>Can I change it?</h3>
+                <p>Absolutely! You can reset it in the <a target="_blank" href="/account">Account</a> page and get a new one.</p>
+                <p><strong>Note :</strong>Once you change it, you must configure your CLI with the new API key for submissions to work properly.</p>
+            </div>
+        </div>
+    </div>
+</div>
