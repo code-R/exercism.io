@@ -2,11 +2,11 @@ module ExercismWeb
   module Routes
     class OnboardingSteps < Core
       get '/onboarding/?' do
-        if current_user.onboarded?
-          redirect '/getting-started'
-        else
-          redirect "/onboarding/#{Onboarding.current_step(current_user.onboarding_steps)}"
-        end
+        # if current_user.onboarded?
+           redirect '/getting-started'
+        # else
+        #   redirect "/onboarding/#{Onboarding.current_step(current_user.onboarding_steps)}"
+        # end
       end
 
       get '/onboarding/install-cli' do
