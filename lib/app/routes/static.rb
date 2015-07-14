@@ -65,6 +65,11 @@ module ExercismWeb
         status 404
         erb :"errors/not_found"
       end
+
+      get '/faq' do
+        erb :"site/faq"
+      end
+      
     end
   end
 end

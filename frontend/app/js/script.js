@@ -1,8 +1,8 @@
 //TODO move all variable declaration to the tops of functions.
 $(function() {
 
-    $(window).on("scroll", function(){
-        $(".primary-nav").toggleClass("scrolled", window.scrollY > 0);
+    $(".primary-nav").autoHidingNavbar({
+      // see next for specifications
     });
 
     $(".pending-submission, .work").each(function(index, element) {
