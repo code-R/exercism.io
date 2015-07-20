@@ -18,7 +18,7 @@ web:
   environment:
     EXERCISES_API_URL: http://54.172.126.241
     JENKINS_URL: http://labs.imaginea.com/jenkins
-    SONARQUBE_URL: http://labs.pramati.com:9001/sonar
+    SONARQUBE_URL: http://labs.pramati.com:9005/sonar
     RACK_ENV: production
     NEWRELIC_ENABLE: false
     EXERCISM_GITHUB_CLIENT_ID: b589dcac66a1c6326ddc
