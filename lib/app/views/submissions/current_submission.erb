@@ -61,7 +61,7 @@
       </p>
     <%end%>
 
-    <% if submission.analysis.present? && submission.language == 'java' %>
+    <% if submission.analysis.present? && (submission.language == 'java' || submission.language =='javascript')%>
       <span><h4>Analysis Summary</h4>
         <p class='show-analysis'>
           <a href=<%= submission.analysis%> target='_blank'><%= submission.analysis %></a>
