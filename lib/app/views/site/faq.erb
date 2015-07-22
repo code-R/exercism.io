@@ -52,9 +52,9 @@
                 </div>
                 <p>Now install the CLI.</p>
                 <div class="fancy-terminal">
-                    <p>sudo su</p>
-                    <p>curl -L http://hootcode.com/downloads/hootcode > /usr/local/bin/hootcode</p>
-                    <p>chmod +x /usr/local/bin/hootcode</p>
+                    <!-- <p>sudo su</p> -->
+                    <p>sudo curl -L http://hootcode.com/downloads/hootcode > /usr/local/bin/hootcode</p>
+                    <p>sudo chmod +x /usr/local/bin/hootcode</p>
                 </div>
                 <p>This installs the hootcode binary in <code>/usr/local/bin</code> directory.</p>
                 <h3>Verify Installation</h3>
@@ -157,7 +157,8 @@
                     <p>git init</p>
                 </div>
                 <h3>Commit Code</h3>
-                <p>Once you have worked on exercise and are ready to submit, go to the root directory of the exercise and stage the files you want to commit.</p>
+                <p>Write code within <code>/src</code> directory. This is <strong class="text-danger">important</strong> for <strong>SonarQube Code Analysis</strong> to work correctly.</p>
+                <p>Once you have worked on exercise and are ready to commit, go to the root directory of the exercise and stage the files you want to commit.</p>
                 <div class="fancy-terminal">
                     <p>
                         git add path/to/file/to/commit.ext
@@ -168,7 +169,7 @@
                     <p>git commit -m "COMMIT_MESSAGE"</p>
                 </div>
                 <h3>Push to GitHub Repository</h3>
-                <p>Create an empty repository in your GitHub account with the same name as the exercise. Assuming the exercise and GitHub repository name is <code>file-browser</code>, let's add a remote, call it <strong>origin</strong>, to it.</p>
+                <p>Create <strong class="text-danger"><em>an empty repository</em></strong> in your GitHub account with the same name as the exercise. Assuming the exercise and GitHub repository name is <code>file-browser</code>, let's add a remote, call it <strong>origin</strong>, to it.</p>
                 <div class="fancy-terminal">
                     <p>git remote add origin <em>https://github.com/USERNAME/file-browser.git</em></p>
                 </div>
