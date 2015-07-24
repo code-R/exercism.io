@@ -4,8 +4,12 @@ module ExercismWeb
     class Exercises < Core
       get '/nitpick/:language/:slug/?' do |track_id, slug|
         #please_login
+        if current_user.guest?
+          workload = NullWorkload.new(track_id: track_id, slug: slug || 'recent')
+        else
+          workload = Workload.new(current_user, track_id, slug || 'recent')
+        end
 
-        workload = NullWorkload.new(track_id: track_id, slug: slug || 'recent')
 
         locals = {
           submissions: workload.submissions,
