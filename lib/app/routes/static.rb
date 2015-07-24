@@ -38,6 +38,8 @@ module ExercismWeb
       end
 
       get "/java-exercises" do
+        status, response = Xapi.get("tracks")
+        @problems = status == 200 ? get_by_slug(JSON.parse(response), 'java') : []
         erb :"site/java-exercises"
       end
 
@@ -46,6 +48,8 @@ module ExercismWeb
       end
 
       get "/javascript-exercises" do
+        status, response = Xapi.get("tracks")
+        @problems = status == 200 ? get_by_slug(JSON.parse(response), 'javascript') : []
         erb :"site/javascript-exercises"
       end
 
@@ -69,7 +73,12 @@ module ExercismWeb
       get '/faq' do
         erb :"site/faq"
       end
-      
+
+      def get_by_slug(response, slug)
+        slug_info_ary = response["tracks"].select{|exercise| exercise["slug"] == slug}
+        slug_info_ary[0]["problems"].map{|name| name.gsub("#{slug}/", "")}
+      end
+
     end
   end
 end

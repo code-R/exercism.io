@@ -3,9 +3,9 @@ module ExercismWeb
   module Routes
     class Exercises < Core
       get '/nitpick/:language/:slug/?' do |track_id, slug|
-        please_login
+        #please_login
 
-        workload = Workload.new(current_user, track_id, slug || 'recent')
+        workload = NullWorkload.new(track_id: track_id, slug: slug || 'recent')
 
         locals = {
           submissions: workload.submissions,
