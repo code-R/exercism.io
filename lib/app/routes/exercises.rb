@@ -149,8 +149,7 @@ module ExercismWeb
                                                 "../../../bin/", "trainer.bin"))
           result = Base64.decode64(blob.content)
           source_language = src_classifer.identify(result)
-          marked_content = ConvertsMarkdownToHTML.convert("```#{source_language.downcase}\n
-                                                          #{result}\n```")
+          marked_content = ConvertsMarkdownToHTML.convert("```#{source_language.downcase}\n#{result}\n```")
           content = { data: marked_content }
           content.to_json
         rescue StandardError => e
