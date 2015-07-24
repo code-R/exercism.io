@@ -16,8 +16,8 @@
           <% @problems.each do |name| %>
             <li>
               <h4 style='display: inline-block;'>
-                <b><a href="/nitpick/java/<%= name%>"><%= name.capitalize %></a></b></h4>
-              <a class="btn btn-default btn-sm pull-right copy-command" href="#" id="copy-command"><i class="fa fa-clipboard"></i></a>
+                <b><a href="/exercises/java/<%=name%>/readme" target="_blank"><%= name.gsub("-"," ").split.map(&:capitalize).join(' ') %></a></b></h4>
+              <a class="btn btn-default btn-sm pull-right " href="/nitpick/java/<%= name%>"><i class="fa fa-info"></i></a>
             </li>
           <% end %>
         </ul>
