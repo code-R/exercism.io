@@ -97,6 +97,8 @@ class Java < CodeAnalyzer
           sonar.projectVersion=2.0
           # path to source directories (required)
           sonar.sources=src
+          sonar.analysis.mode=preview
+          sonar.issuesReport.html.enable=true
         </properties>
         <javaOpts/>
         <jdk>(Inherit From Job)</jdk>
@@ -119,7 +121,9 @@ class Java < CodeAnalyzer
     end
 
     if build_job_response.code == 201
-      return "#{sonarqube_url}/dashboard/index/"+projectName
+      sleep 8
+      #return "#{sonarqube_url}/dashboard/index/"+projectName
+      return "#{jenkins_url}"+"/job/"+"#{projectName}"+"/ws/.sonar/issues-report/issues-report-light.html"
     else
       return "--error--"
     end
@@ -166,6 +170,8 @@ class Javascript < CodeAnalyzer
           sonar.sources=src
           sonar.language=js
           sonar.sourceEncoding=UTF-8
+          sonar.analysis.mode=preview
+          sonar.issuesReport.html.enable=true
         </properties>
         <javaOpts/>
         <jdk>(Inherit From Job)</jdk>
@@ -188,7 +194,9 @@ class Javascript < CodeAnalyzer
     end
 
     if build_job_response.code == 201
-      return "#{sonarqube_url}/dashboard/index/"+projectName
+      #return "#{sonarqube_url}/dashboard/index/"+projectName
+      sleep 8
+      return "#{jenkins_url}"+"/job/"+"#{projectName}"+"/ws/.sonar/issues-report/issues-report-light.html"
     else
       return "--error--"
     end

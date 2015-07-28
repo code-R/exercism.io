@@ -130,14 +130,14 @@
         </dd>
       </dl>
 
-      <dl>
+      <!-- <dl>
         <dt>Update Exercises:</dt>
         <dd>
           <form action="/fetch_git_submodules" method="get">
             <input type="submit" value="Fetch Assignments" class="btn btn-default">
           </form>
         </dd>
-      </dl>
+      </dl> -->
 
       <p>You can update your <%= gravatar_tag current_user.avatar_url %> avatar on
         <a href="https://github.com/settings/profile">GitHub</a>.</p>
@@ -147,9 +147,9 @@
           <input type="hidden" name="_method" value="put" />
           <div class="form-group">
             <input type="email" id="email" name="account[email]" placeholder="Email" value="<%= current_user.email %>" class="form-control" />
-            <select name="account[source_type]" class="form-control">
-              <%= account_source_options %>
-            </select>
+            <!-- <select name="account[source_type]" class="form-control">
+              <%#= account_source_options %>
+            </select> -->
             <input type="submit" name="update" value="Update" class="btn btn-default" />
           </div>
         </form>
