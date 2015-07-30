@@ -3,26 +3,32 @@
     <br>
     <aside class="col-md-4">
       <nav>
-        <ul class="nav nav-stacked nav-bordered">
-          <% %w(recent last-week last-month last-quarter aging).each do |slug| %>
-            <%= dashboard_assignment_section_nav(language, slug) %>
-          <% end %>
-          <%= dashboard_assignment_section_nav(language, 'needs-input') %>
-        </ul>
+         <!--  <ul class="nav nav-stacked nav-bordered">
+            <%# %w(recent last-week last-month last-quarter aging).each do |slug| %>
+              <%#= dashboard_assignment_section_nav(language, slug) %>
+            <%# end %>
+            <%= dashboard_assignment_section_nav(language, 'needs-input') %>
+          </ul> -->
         <br />
+        <h2>
+          <%= language_icon(language) %> Submissions
+        </h2>
         <% if exercises.any? %>
           <ul class="nav nav-stacked nav-bordered">
             <% exercises.each do |exercise| %>
               <%= dashboard_assignment_nav(language, exercise.slug, breakdown[exercise.slug]) %>
             <% end %>
           </ul>
+        <% else %>
+            <p>There are no submissions to this exercise.</p>
         <% end %>
       </nav>
       </br>
     </aside>
 
     <main id="pending-submissions" class="col-md-8">
-      <%= erb :"nitpick/pending", locals: {submissions: submissions, language: language} %>
+         <%#= erb :"nitpick/pending", locals: {submissions: submissions, language: language} %>
+          <%= erb :"nitpick/list", locals: {submissions: submissions, language: language} %>
     </main>
   </div>
 </div>
