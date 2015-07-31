@@ -54,7 +54,7 @@ class NullWorkload
   private
 
   def pending
-    @pending ||= unmuted_submissions.pending
+    @pending ||= unmuted_submissions.where('state = ? or state = ?', 'pending', 'done')
   end
 
   def needs_input

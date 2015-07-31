@@ -1,4 +1,5 @@
 <% if submissions.any? %>
+  <a href="#"><%= nav_text(submissions.first.slug) %></a>
 <hr/>
   <div class="pending-submissions">
     <% submissions.each do |submission| %>

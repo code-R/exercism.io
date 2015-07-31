@@ -86,7 +86,8 @@ module ExercismWeb
         end
         Completion.new(submission).save
         LifecycleEvent.track('completed', current_user.id)
-        flash[:success] = "#{submission.name} in #{submission.track_id} will no longer appear in the nitpick lists."
+        #flash[:success] = "#{submission.name} in #{submission.track_id} will no longer appear in the nitpick lists."
+        flash[:success] = "#{submission.name} in #{submission.track_id} is completed."
         redirect "/"
       end
 
