@@ -43,11 +43,11 @@ class Message
   end
 
   def body
-    ERB.new(template(template_name)).result binding
+     ERB.new(template(template_name)).result binding
   end
 
   def from_email
-    'exercism.io <kytrinyx@exercism.io>'
+    'HootCode <hootcode@gmail.com>'
   end
 
   def template_name
@@ -59,7 +59,7 @@ class Message
   end
 
   def full_subject
-    "[exercism.io] #{subject}"
+    "[HootCode] #{subject}"
   end
 
   def ship

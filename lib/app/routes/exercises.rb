@@ -86,8 +86,20 @@ module ExercismWeb
         end
         Completion.new(submission).save
         LifecycleEvent.track('completed', current_user.id)
+        #sending mail to reviewers if reviewer exists
+        reviewers = YAML.load_file('reviewers.yml')[ENV['RACK_ENV']][submission.language]
+        user = reviewers.present? ? User.find_by(username: reviewers.first) : nil
+        if user
+          SubmissionReviewMessage.ship(
+                instigator: current_user,
+                target: {
+                  submission: submission
+                },
+                site_root: site_root
+              )
+        end
         #flash[:success] = "#{submission.name} in #{submission.track_id} will no longer appear in the nitpick lists."
-        flash[:success] = "#{submission.name} in #{submission.track_id} is completed."
+        flash[:success] = "Great! #{submission.name} in #{submission.track_id} is completed and mail has been sent to the reviewer for the feedback."
         redirect "/"
       end
 

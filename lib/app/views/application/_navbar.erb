@@ -33,8 +33,19 @@
                 </li> -->
                 <li>
                     <a href="/faq">
-                        <span class="fa fa-question-circle fa-lg navbar-link-icon fa-fw"></span>FAQ</a>
+                        <span class="fa fa-question-circle fa-lg navbar-link-icon fa-fw"></span>FAQ
+                    </a>
                 </li>
+
+                <li class="dropdown">
+                    <a class="dropdown-toggle" id="drop-exercises" href="#" data-toggle="dropdown">Exercises <b class="caret"></b></a>
+
+                    <ul class="dropdown-menu" id="menu-exercises" role="menu" area-labelledby="drop-exercises">
+                        <li><a role="menuitem" href="/java-exercises"><span class="navbar-link-icon fa-fw"></span>Java</a></li>
+                        <li><a role="menuitem" href="/javascript-exercises"><span class="navbar-link-icon fa-fw"></span>Javascript</a></li>
+                    </ul>
+                </li>
+
                 <% if !current_user.guest? %>
                   <%= erb :"application/nav/nitpicker_languages" %>
                   <%= erb :"application/nav/teams" %>
