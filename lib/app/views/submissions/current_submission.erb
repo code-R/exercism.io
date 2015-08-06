@@ -64,7 +64,18 @@
     <% if submission.analysis.present? && (submission.language == 'java' || submission.language =='javascript')%>
       <span><h4>Analysis Summary</h4>
         <p class='show-analysis'>
-          <a href=<%= submission.analysis%> target='_blank'><%= submission.analysis %></a>
+          <ul class="list-group">
+            <li class="list-group-item active">Issues: <%= submission.analysis['issues'].count %></li>
+            <% if submission.analysis['issues']%>
+              <% submission.analysis['issues'].each do |issue| %>
+                <li class="list-group-item">
+                <b><%= "#{issue['component'].split(':').last}:#{issue['line']}" %></b>
+                <br/>
+                <%= "#{issue['message']}"%>
+                </li>  
+              <%end%>
+            <%end%>
+          </ul>
         </p>
       </span>
     <%end%>
