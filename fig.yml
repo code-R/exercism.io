@@ -5,24 +5,36 @@ db:
     POSTGRES_PASSWORD: apples
   volumes:
     - "/home/vamsi/postgres/data:/var/lib/postgresql/data"
-
+redis:
+  image: sameersbn/redis
+  volumes:
+    - "/home/vamsi/redis:/var/lib/redis"
+worker:
+  build: .
+  volumes:
+    - ".:/exercism"
+  links:
+    - db
+    - redis
+  command: sidekiq -r /exercism/sidekiq_enviroment.rb -L -d -q analyze -q default
 web:
   image: exercism-web
   links:
     - db
+    - redis
   command: foreman start
   volumes:
     - ".:/exercism"
   ports:
-    - "80:4567"
+    - "4567:4567"
   environment:
-    EXERCISES_API_URL: http://54.172.126.241
+    EXERCISES_API_URL: http://localhost:9292
     JENKINS_URL: http://labs.imaginea.com/jenkins
     SONARQUBE_URL: http://labs.pramati.com:9005/sonar
     RACK_ENV: production
     NEWRELIC_ENABLE: false
-    EXERCISM_GITHUB_CLIENT_ID: b589dcac66a1c6326ddc
-    EXERCISM_GITHUB_CLIENT_SECRET: 57e204a4e24e78a44a4642efd93934252cb0f180
+    EXERCISM_GITHUB_CLIENT_ID: 5ba119e65304411c5181
+    EXERCISM_GITHUB_CLIENT_SECRET: 2667dfdf7fbd5c0f59504c1cce997de5fb1d1565
     PORT: 4567
     EMAIL_DOMAIN: hootcode.com
     EMAIL_PASSWORD: hootcode123

@@ -10,7 +10,7 @@ module ExercismWeb
       end
 
       configure :production do
-        disable :show_exceptions
+        enable :show_exceptions
       end
 
       configure :development do
@@ -39,11 +39,13 @@ module ExercismWeb
 
       helpers do
         def github_client_id
-          ENV.fetch('EXERCISM_GITHUB_CLIENT_ID')
+          #ENV.fetch('EXERCISM_GITHUB_CLIENT_ID')
+          "5ba119e65304411c5181"
         end
 
         def github_client_secret
-          ENV.fetch('EXERCISM_GITHUB_CLIENT_SECRET')
+          #ENV.fetch('EXERCISM_GITHUB_CLIENT_SECRET')
+          "2667dfdf7fbd5c0f59504c1cce997de5fb1d1565"
         end
 
         def host

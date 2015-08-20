@@ -30,3 +30,7 @@ run ExercismWeb::App
 map '/api/v1/' do
   run ExercismAPI::App
 end
+
+require 'sidekiq/web'
+Sidekiq::Web.use Rack::Session::Cookie, :secret => ENV['RACK_SESSION_COOKIE']
+run Rack::URLMap.new('/' => ExercismWeb::App, '/sidekiq' => Sidekiq::Web)

@@ -1,5 +1,6 @@
 require './config/build_id'
 require './config/bugsnag'
+require './config/sidekiq'
 require_relative 'exercism'
 
 require 'sinatra/petroglyph'

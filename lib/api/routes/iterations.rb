@@ -53,10 +53,7 @@ module ExercismAPI
           solution = {data['path'] => data['code']}
         end
         opts = {
-          code_analysis: CodeAnalyzer.build({ language: data["language"],
-                                              code: data["code"],
-                                              git_rep_info: user.username+"/"+data['problem'],
-                                              user: user }).run,
+          code_analysis: nil,
           test_analysis: data["test_analysis"],
           track: data["language"],
           slug: data["problem"]
@@ -83,6 +80,7 @@ module ExercismAPI
         end
 
         attempt.save
+        Jobs::Analyze.perform_in(1.minutes, attempt.submission.key)
         Notify.everyone(attempt.submission.reload, 'code', user)
         # if we don't have a 'fetched' event, we want to hack one in.
         LifecycleEvent.track('fetched', user.id)

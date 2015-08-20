@@ -4,8 +4,6 @@ RUN mkdir /exercism
 
 WORKDIR /exercism
 
-ADD Gemfile /exercism/Gemfile
-
-ADD Gemfile.lock /exercism/Gemfile.lock
+ADD . /exercism
 
 RUN bundle install
