@@ -13,7 +13,7 @@ Here is the list of modules included in Hootcode.
 2. Exercises Module
  - Exercise Modules contains the information of exercises present,submisssions made for each exercise and displaying the submission for each exercise
 3. Solutions Module
-- This module deals with the solution that corresponds to a specific language for a specific exercise
+ - This module deals with the solution that corresponds to a specific language for a specific exercise
 4. Team Module
  - Using this module we can create Teams and manage teams with in the Hootcode and we can share an existing exercise solution with in the specified team.
 5. Nits Module
